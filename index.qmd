@@ -1,3 +1,4 @@
+
 ---
 title: "Simulation Challenge"
 subtitle: "Starter Template with To-Dos"
@@ -133,6 +134,30 @@ Explain whether the expected value of your account balance after one flip is gre
 
 ```{python}
 #| label: q1-expected-value-py
+import numpy as np
+import pandas as pd
+
+np.random.seed(45)
+
+n_simulations = 1
+
+starting_balance = 30000
+
+coin_flip = np.random.binomial(n=1, p=0.5, size=n_simulations)
+
+winning = np.where(coin_flip == 1, 1.5, 0.6)
+
+sim_data = pd.DataFrame({
+  'sim_number': range(1, n_simulations + 1),
+  'coin_flip': coin_flip,
+  'balance': starting_balance * winning
+})
+
+sim_data
+# Round monetary values to whole dollars; percentages to 1 decimal
+
+
+# Present your findings OUTSIDE this chunk in narrative prose
 
 # Compute the expected value after one coin flip.
 # Round monetary values to whole dollars; percentages to 1 decimal.
@@ -141,6 +166,8 @@ Explain whether the expected value of your account balance after one flip is gre
 
 ```
 
+"every flip results in a increase in balance based on my calculations. your new balance is $45,000."
+
 ### 2) Single Simulation Over Time (Narrative + Plot)
 
 Narrate and visualize what happens to your account balance over the course of one simulation run. Describe the trajectory and state whether you would be satisfied with this particular outcome. Explain your reasoning.
@@ -148,7 +175,44 @@ Narrate and visualize what happens to your account balance over the course of on
 ```{python}
 #| label: q2-single-sim-py
 #| fig-cap: "Single simulation path of account balance"
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 
+np.random.seed(45)
+
+n_simulations = 50
+
+starting_balance = 30000
+
+coin_flip = np.random.binomial(n=1, p=0.5, size=n_simulations)
+
+winning = np.where(coin_flip == 1, 1.5, 0.6)
+
+# Cumulative balance: each period multiplies the previous balance by 1.5 or 0.6
+balance_path = np.concatenate([[starting_balance], starting_balance * np.cumprod(winning)])
+ages = np.arange(25, 76)  # 25 to 75 inclusive (51 points)
+
+# Table: each row shows balance *after* that sim (new balance replaces previous as the basis for the next flip)
+sim_data = pd.DataFrame({
+  'sim_number': range(1, n_simulations + 1),
+  'age': range(25, 75),
+  'coin_flip': coin_flip,
+  'balance': balance_path[1:]  # balance after each sim (previous balance × 1.5 or 0.6)
+})
+
+# Line graph: balance progression by age
+fig, ax = plt.subplots(figsize=(8, 4))
+ax.plot(ages, balance_path, color='steelblue', linewidth=2)
+ax.set_xlabel('Age')
+ax.set_ylabel('Balance ($)')
+ax.set_title('Account balance over time (age 25 to 75)')
+ax.grid(True, alpha=0.3)
+ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x:,.0f}'))
+plt.tight_layout()
+plt.show()
+
+sim_data
 # Simulate one path from $30,000 over N periods.
 # Use matplotlib (Object Oriented style) for the time-series plot.
 # Set a random seed for reproducibility.
@@ -163,9 +227,46 @@ Narrate and visualize what happens to your account balance over the course of on
 Describe the distribution of final account balances across 100 simulations. Report the mean, median, and the probability of ending with more than your initial $30,000. Given these results, would you be satisfied with the likely outcomes? Explain your reasoning.
 
 ```{python}
-#| label: q3-dist-100-py
+#| label: q3-dist-100-pyimport numpy as np
 #| fig-cap: "Distribution of final balances across 100 simulations"
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 
+np.random.seed(45)
+
+n_simulations = 100
+
+starting_balance = 30000
+
+coin_flip = np.random.binomial(n=1, p=0.5, size=n_simulations)
+
+winning = np.where(coin_flip == 1, 1.5, 0.6)
+
+# Cumulative balance: each period multiplies the previous balance by 1.5 or 0.6
+balance_path = np.concatenate([[starting_balance], starting_balance * np.cumprod(winning)])
+trial = np.arange(0, 100)  
+
+# Table: each row shows balance *after* that sim (new balance replaces previous as the basis for the next flip)
+sim_data = pd.DataFrame({
+  'sim_number': range(1, n_simulations + 1),
+  'trials': range(0, 100),
+  'coin_flip': coin_flip,
+  'balance': balance_path[1:]  # balance after each sim (previous balance × 1.5 or 0.6)
+})
+
+# Line graph: balance progression by age
+fig, ax = plt.subplots(figsize=(8, 4))
+ax.plot(trial, balance_path, color='steelblue', linewidth=2)
+ax.set_xlabel('Trials')
+ax.set_ylabel('Balance ($)')
+ax.set_title('Account balance over 100 coin flips')
+ax.grid(True, alpha=0.3)
+ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x:,.0f}'))
+plt.tight_layout()
+plt.show()
+
+sim_data
 # Run 100 simulations and plot a histogram of final balances.
 # Add a vertical line at $30,000 for reference.
 # Compute mean, median, and P(final > $30,000).

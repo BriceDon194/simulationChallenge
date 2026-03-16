@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -58,17 +58,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="index_files/libs/clipboard/clipboard.min.js"></script>
 <script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="index_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="index_files/libs/quarto-html/popper.min.js"></script>
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-bb462d781dde1847d9e3ccf7736099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -107,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-📋 What You Need To Do
+<span class="screen-reader-only">Important</span>📋 What You Need To Do
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -127,7 +131,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-🐍 Python Environment Setup
+<span class="screen-reader-only">Note</span>🐍 Python Environment Setup
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -142,9 +146,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>Then open a terminal and install dependencies:</p>
 <p><strong>Windows:</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">py</span> <span class="at">-m</span> pip install jupyter matplotlib pandas daft-pgm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">py</span> <span class="at">-m</span> pip install jupyter matplotlib pandas daft-pgm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Mac:</strong></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install jupyter matplotlib pandas daft-pgm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install jupyter matplotlib pandas daft-pgm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This ensures you have everything needed for Quarto rendering and the DAG visualizations.</p>
 </div>
 </div>
@@ -154,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-⚠️ AI Partnership Required
+<span class="screen-reader-only">Warning</span>⚠️ AI Partnership Required
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -167,7 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-📊 Grading Criteria
+<span class="screen-reader-only">Important</span>📊 Grading Criteria
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -184,7 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-📝 How to Present Your Analysis
+<span class="screen-reader-only">Tip</span>📝 How to Present Your Analysis
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -233,10 +237,418 @@ Figure&nbsp;1: Generative DAG model for the investment game showing how wealth e
 <section id="expected-value-after-1-flip" class="level3">
 <h3 class="anchored" data-anchor-id="expected-value-after-1-flip">1) Expected Value After 1 Flip</h3>
 <p>Explain whether the expected value of your account balance after one flip is greater than, equal to, or less than $30,000. What is the gain in expected value as a percentage of your buy-in? Based on this simple analysis, state whether you would recommend buying into the game and why.</p>
+<div id="cell-q1-expected-value-py" class="cell" data-execution_count="3">
+<div id="q1-expected-value-py" class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sim_number</th>
+<th data-quarto-table-cell-role="th">coin_flip</th>
+<th data-quarto-table-cell-role="th">balance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+<td>1</td>
+<td>45000.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>“every flip results in a increase in balance based on my calculations. your new balance is $45,000.”</p>
 </section>
 <section id="single-simulation-over-time-narrative-plot" class="level3">
 <h3 class="anchored" data-anchor-id="single-simulation-over-time-narrative-plot">2) Single Simulation Over Time (Narrative + Plot)</h3>
 <p>Narrate and visualize what happens to your account balance over the course of one simulation run. Describe the trajectory and state whether you would be satisfied with this particular outcome. Explain your reasoning.</p>
+<div id="q2-single-sim-py" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div id="q2-single-sim-py-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/q2-single-sim-py-output-1.png" width="758" height="374" class="figure-img"></p>
+<figcaption>Single simulation path of account balance</figcaption>
+</figure>
+</div>
+</div>
+<div id="q2-single-sim-py-2" class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sim_number</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">coin_flip</th>
+<th data-quarto-table-cell-role="th">balance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+<td>25</td>
+<td>1</td>
+<td>45000.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2</td>
+<td>26</td>
+<td>1</td>
+<td>67500.000000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3</td>
+<td>27</td>
+<td>0</td>
+<td>40500.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>4</td>
+<td>28</td>
+<td>0</td>
+<td>24300.000000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>5</td>
+<td>29</td>
+<td>0</td>
+<td>14580.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>6</td>
+<td>30</td>
+<td>0</td>
+<td>8748.000000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>7</td>
+<td>31</td>
+<td>0</td>
+<td>5248.800000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">7</th>
+<td>8</td>
+<td>32</td>
+<td>0</td>
+<td>3149.280000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8</th>
+<td>9</td>
+<td>33</td>
+<td>0</td>
+<td>1889.568000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">9</th>
+<td>10</td>
+<td>34</td>
+<td>1</td>
+<td>2834.352000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">10</th>
+<td>11</td>
+<td>35</td>
+<td>1</td>
+<td>4251.528000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">11</th>
+<td>12</td>
+<td>36</td>
+<td>1</td>
+<td>6377.292000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">12</th>
+<td>13</td>
+<td>37</td>
+<td>1</td>
+<td>9565.938000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">13</th>
+<td>14</td>
+<td>38</td>
+<td>0</td>
+<td>5739.562800</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">14</th>
+<td>15</td>
+<td>39</td>
+<td>1</td>
+<td>8609.344200</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">15</th>
+<td>16</td>
+<td>40</td>
+<td>0</td>
+<td>5165.606520</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">16</th>
+<td>17</td>
+<td>41</td>
+<td>1</td>
+<td>7748.409780</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">17</th>
+<td>18</td>
+<td>42</td>
+<td>1</td>
+<td>11622.614670</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">18</th>
+<td>19</td>
+<td>43</td>
+<td>0</td>
+<td>6973.568802</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">19</th>
+<td>20</td>
+<td>44</td>
+<td>0</td>
+<td>4184.141281</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">20</th>
+<td>21</td>
+<td>45</td>
+<td>1</td>
+<td>6276.211922</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">21</th>
+<td>22</td>
+<td>46</td>
+<td>0</td>
+<td>3765.727153</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">22</th>
+<td>23</td>
+<td>47</td>
+<td>0</td>
+<td>2259.436292</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">23</th>
+<td>24</td>
+<td>48</td>
+<td>0</td>
+<td>1355.661775</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">24</th>
+<td>25</td>
+<td>49</td>
+<td>0</td>
+<td>813.397065</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">25</th>
+<td>26</td>
+<td>50</td>
+<td>0</td>
+<td>488.038239</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">26</th>
+<td>27</td>
+<td>51</td>
+<td>1</td>
+<td>732.057359</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">27</th>
+<td>28</td>
+<td>52</td>
+<td>0</td>
+<td>439.234415</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">28</th>
+<td>29</td>
+<td>53</td>
+<td>1</td>
+<td>658.851623</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">29</th>
+<td>30</td>
+<td>54</td>
+<td>0</td>
+<td>395.310974</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">30</th>
+<td>31</td>
+<td>55</td>
+<td>1</td>
+<td>592.966460</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">31</th>
+<td>32</td>
+<td>56</td>
+<td>0</td>
+<td>355.779876</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">32</th>
+<td>33</td>
+<td>57</td>
+<td>1</td>
+<td>533.669814</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">33</th>
+<td>34</td>
+<td>58</td>
+<td>0</td>
+<td>320.201889</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">34</th>
+<td>35</td>
+<td>59</td>
+<td>1</td>
+<td>480.302833</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">35</th>
+<td>36</td>
+<td>60</td>
+<td>0</td>
+<td>288.181700</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">36</th>
+<td>37</td>
+<td>61</td>
+<td>0</td>
+<td>172.909020</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">37</th>
+<td>38</td>
+<td>62</td>
+<td>1</td>
+<td>259.363530</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">38</th>
+<td>39</td>
+<td>63</td>
+<td>0</td>
+<td>155.618118</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">39</th>
+<td>40</td>
+<td>64</td>
+<td>0</td>
+<td>93.370871</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">40</th>
+<td>41</td>
+<td>65</td>
+<td>1</td>
+<td>140.056306</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">41</th>
+<td>42</td>
+<td>66</td>
+<td>0</td>
+<td>84.033784</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">42</th>
+<td>43</td>
+<td>67</td>
+<td>1</td>
+<td>126.050675</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">43</th>
+<td>44</td>
+<td>68</td>
+<td>0</td>
+<td>75.630405</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">44</th>
+<td>45</td>
+<td>69</td>
+<td>0</td>
+<td>45.378243</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">45</th>
+<td>46</td>
+<td>70</td>
+<td>1</td>
+<td>68.067365</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">46</th>
+<td>47</td>
+<td>71</td>
+<td>1</td>
+<td>102.101047</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">47</th>
+<td>48</td>
+<td>72</td>
+<td>0</td>
+<td>61.260628</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">48</th>
+<td>49</td>
+<td>73</td>
+<td>1</td>
+<td>91.890942</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">49</th>
+<td>50</td>
+<td>74</td>
+<td>0</td>
+<td>55.134565</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 </section>
 <section id="simulations-distribution-of-final-balances" class="level3">
 <h3 class="anchored" data-anchor-id="simulations-distribution-of-final-balances">3) 100 Simulations: Distribution of Final Balances</h3>
@@ -339,13 +751,14 @@ Figure&nbsp;1: Generative DAG model for the investment game showing how wealth e
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
