@@ -227,7 +227,7 @@ sim_data
 Describe the distribution of final account balances across 100 simulations. Report the mean, median, and the probability of ending with more than your initial $30,000. Given these results, would you be satisfied with the likely outcomes? Explain your reasoning.
 
 ```{python}
-#| label: q3-dist-100-pyimport numpy as np
+#| label: q3-dist-100-py
 #| fig-cap: "Distribution of final balances across 100 simulations"
 import numpy as np
 import pandas as pd
@@ -245,35 +245,37 @@ winning = np.where(coin_flip == 1, 1.5, 0.6)
 
 # Cumulative balance: each period multiplies the previous balance by 1.5 or 0.6
 balance_path = np.concatenate([[starting_balance], starting_balance * np.cumprod(winning)])
-trial = np.arange(0, 100)  
+number_of_simulations = np.arange(0, n_simulations + 1)  # 0 to 100 inclusive (101 points)
 
 # Table: each row shows balance *after* that sim (new balance replaces previous as the basis for the next flip)
 sim_data = pd.DataFrame({
   'sim_number': range(1, n_simulations + 1),
-  'trials': range(0, 100),
+  'age': range(1, n_simulations + 1),
   'coin_flip': coin_flip,
   'balance': balance_path[1:]  # balance after each sim (previous balance × 1.5 or 0.6)
 })
 
-# Line graph: balance progression by age
+# Line graph: balance progression by number of simulations
 fig, ax = plt.subplots(figsize=(8, 4))
-ax.plot(trial, balance_path, color='steelblue', linewidth=2)
-ax.set_xlabel('Trials')
+ax.plot(number_of_simulations, balance_path, color='steelblue', linewidth=2)
+ax.set_xlabel('Number of simulations')
 ax.set_ylabel('Balance ($)')
-ax.set_title('Account balance over 100 coin flips')
+ax.set_title('Account balance over 100 simulations')
 ax.grid(True, alpha=0.3)
 ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x:,.0f}'))
 plt.tight_layout()
 plt.show()
 
 sim_data
-# Run 100 simulations and plot a histogram of final balances.
-# Add a vertical line at $30,000 for reference.
-# Compute mean, median, and P(final > $30,000).
-# Round balances to whole dollars; probabilities to 2-3 decimals.
-# Present these statistics OUTSIDE this chunk in narrative form.
-# Example: "The median outcome was $12,345, well below the initial investment."
 
+# Mean, median, and P(final balance > $30,000) from the 100 balances in this path
+final_balances = balance_path[1:]
+mean_final = np.round(np.mean(final_balances), 0)
+median_final = np.round(np.median(final_balances), 0)
+prob_above_30k = np.round(np.mean(final_balances > 30000), 3)
+print(f"Mean final balance:   ${mean_final:,.0f}")
+print(f"Median final balance: ${median_final:,.0f}")
+print(f"P(final balance > $30,000): {prob_above_30k}")
 ```
 
 ### 4) Probability Balance > $30,000 at Age 75 (Original Game)
