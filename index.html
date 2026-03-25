@@ -682,10 +682,19 @@ Profitable simulations: 6.0%</code></pre>
 <section id="modified-strategy-bet-exactly-25-each-round" class="level3">
 <h3 class="anchored" data-anchor-id="modified-strategy-bet-exactly-25-each-round">5) Modified Strategy (Bet Exactly 25% Each Round)</h3>
 <p>Instead of having the full balance at risk with each coin flip, assume only 25% of your balance is gambled each year. Compare this modified strategy to the original game: Which is riskier? Which has better upside? Which strategy would you recommend and why?</p>
-<div id="q5-modified-25pct-py" class="cell" data-execution_count="7">
+<div id="cell-q5-modified-25pct-py" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
-<pre><code>Total simulations: 50
-Profitable simulations: 14.0%</code></pre>
+<pre><code>Final balance after 100 flips (this path): $22,868
+P(final &gt; $30,000 | original strategy, 10000 paths): 0.14
+P(final &gt; $30,000 | 25% at-risk strategy, 10000 paths): 0.697</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div id="q5-modified-25pct-py" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/q5-modified-25pct-py-output-2.png" width="758" height="374" class="figure-img"></p>
+<figcaption>Original vs modified balance paths over 100 flips (same coin outcomes)</figcaption>
+</figure>
+</div>
 </div>
 </div>
 </section>

@@ -333,45 +333,82 @@ print(f"Profitable simulations: {percentage_profitable}%")
 Instead of having the full balance at risk with each coin flip, assume only 25% of your balance is gambled each year. Compare this modified strategy to the original game: Which is riskier? Which has better upside? Which strategy would you recommend and why?
 
 
-Need to add a graph here
-
 ```{python}
 #| label: q5-modified-25pct-py
-#| fig-cap: "Modified strategy distribution (bet 25% each round)"
+#| fig-cap: "Original vs modified balance paths over 100 flips (same coin outcomes)"
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# Same as other chunks: legacy RNG with seed 45 (not default_rng — different stream)
 np.random.seed(45)
 
-n_simulations = 50
-
+n_simulations = 100  # coin flips per path; each flip uses 25% of the *current* balance
 starting_balance = 30000
 
-# Only 25% of balance is gambled each round: 75% stays safe, 25% gets 1.5x (win) or 0.6x (lose)
-# Effective factor per round = 0.75 + 0.25 * (1.5 or 0.6) = 1.125 (win) or 0.9 (lose)
 coin_flip = np.random.binomial(n=1, p=0.5, size=n_simulations)
-winning = np.where(coin_flip == 1, 1.125, 0.9)
 
-# Cumulative balance: each period applies the 25%-at-risk factor to previous balance
-balance_path = np.concatenate([[starting_balance], starting_balance * np.cumprod(winning)])
-ages = np.arange(25, 76)  # 25 to 75 inclusive (51 points)
+# Each round: keep 75% safe; risk 25%. Win → that 25% is worth ×1.5; lose → ×0.6. Add back to total.
+balance_path = [starting_balance]
+balance = starting_balance
+for flip in coin_flip:
+    at_risk = 0.25 * balance
+    safe = 0.75 * balance
+    if flip == 1:
+        balance = safe + at_risk * 1.5
+    else:
+        balance = safe + at_risk * 0.6
+    balance_path.append(balance)
 
-# Table: each row shows balance *after* that sim (new balance replaces previous as the basis for the next flip)
+balance_path = np.array(balance_path, dtype=float)
+balances_after_round = np.round(balance_path[1:], 0)
+
+# Table: each row is balance after that flip (next flip uses this as the new base)
 sim_data = pd.DataFrame({
-  'sim_number': range(1, n_simulations + 1),
-  'age': range(25, 75),
-  'coin_flip': coin_flip,
-  'balance': balance_path[1:]  # balance after each sim (25% at risk: ×1.125 or ×0.9)
-
+    'sim_number': range(1, n_simulations + 1),
+    'age': range(26, 26 + n_simulations),  # aligns with plot: start at 25, then 26 … 125
+    'coin_flip': coin_flip,
+    'balance': balances_after_round,
+})
 
 sim_data
 
-total_sims = len(sim_data)
-profitable_sims = (sim_data['balance'] > 30000).sum()
-percentage_profitable = round(100 * (sim_data['balance'] > 30000).mean(), 3)
-print(f"Total simulations: {total_sims}")
-print(f"Profitable simulations: {percentage_profitable}%")
+final_balance_path = int(round(balance_path[-1], 0))
+print(f"Final balance after {n_simulations} flips (this path): ${final_balance_path:,}")
+
+# Monte Carlo: same RNG stream continues after coin_flip (still seed 45 overall)
+n_mc = 10000
+flips = np.random.binomial(1, 0.5, size=(n_mc, n_simulations))
+mult = np.where(flips == 1, 1.5, 0.6)
+final_original = np.round(starting_balance * np.prod(mult, axis=1), 0)
+mod_factor = np.where(flips == 1, 0.75 + 0.25 * 1.5, 0.75 + 0.25 * 0.6)
+final_modified = np.round(starting_balance * np.prod(mod_factor, axis=1), 0)
+
+p_final_gt_30k_orig = round((final_original > 30000).mean(), 3)
+p_final_gt_30k_mod = round((final_modified > 30000).mean(), 3)
+print(f"P(final > $30,000 | original strategy, {n_mc} paths): {p_final_gt_30k_orig}")
+print(f"P(final > $30,000 | 25% at-risk strategy, {n_mc} paths): {p_final_gt_30k_mod}")
+
+# Same coin sequence as the table: original = full balance × 1.5 or 0.6 each flip
+orig_factors = np.where(coin_flip == 1, 1.5, 0.6)
+original_path = np.concatenate([[starting_balance], starting_balance * np.cumprod(orig_factors)])
+
+# One point per flip: age 25 = start, then 26 … 125 after each yearly flip
+ages = np.arange(25, 26 + n_simulations)
+
+fig, ax = plt.subplots(figsize=(8, 4))
+ax.plot(ages, original_path, color='coral', linewidth=2, label='Original (100% at risk)')
+ax.plot(ages, balance_path, color='steelblue', linewidth=2, label='Modified (25% at risk)')
+ax.axhline(30000, color='black', linestyle='--', linewidth=1, alpha=0.7, label='Initial $30,000')
+ax.set_xlabel('Age')
+ax.set_ylabel('Balance ($)')
+ax.set_title('Account balance over time (same coin flips for both strategies)')
+ax.legend()
+ax.grid(True, alpha=0.3)
+ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x:,.0f}'))
+plt.tight_layout()
+plt.show()
+
 # Implement the modified game where only 25% of your balance is at risk each flip.
 # Run 100 simulations and plot the distribution of final balances.
 # Estimate P(final > $30,000) and compare to the original strategy.
