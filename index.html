@@ -688,7 +688,7 @@ Profitable simulations: 6.0%</code></pre>
 <div id="cell-q5-modified-25pct-py" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>Final balance after 50 flips (this path): $16,763
-P(final &gt; $30,000 | original strategy, 10000 paths): 0.236
+P(final &gt; $30,000 | original strategy, 10000 paths): 0.06
 P(final &gt; $30,000 | 25% at-risk strategy, 10000 paths): 0.667</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -700,10 +700,12 @@ P(final &gt; $30,000 | 25% at-risk strategy, 10000 paths): 0.667</code></pre>
 </div>
 </div>
 </div>
+<p>When comparing the 2 strategies, the original is significantly more risky. When comparing the probabilites of ending up with a balance greater than $30,000, the original strategy has a probability of 6% while the modified strategy has a probability of 66%. The probability being 11x higher should tell you the whole story. Theoretically, if you concinuted with the 25% strategy, you would have a decent shot at ending up with a balance greater than $30,000. This is a significant difference and I would not recommend the original strategy.</p>
 </section>
 <section id="the-kelly-criterion" class="level3">
 <h3 class="anchored" data-anchor-id="the-kelly-criterion">6) The Kelly Criterion</h3>
 <p>Explain what the Kelly Criterion is and how it relates to the modified strategy from Section 5. Does the Kelly Criterion support your recommendation?</p>
+<p>The Kelly Criterion is a formula used to determine the optimal size of a series of bets or investments to maximize long-term capital growth. This relates to the modified strategy from section 5 as it is a strategy that only takes a portion of your balance to risk on a bet. The criterion supports my recommendation as the formula itself helps calculate a flat balance to risk on each bet and has proven to be the most optimal strategy for returns on a series of bets. It could be different from our 25% strategy in reality, but the theory behind the Kelly Criterion is still valid.</p>
 </section>
 </section>
 <section id="professional-presentation" class="level2">
