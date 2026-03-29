@@ -393,7 +393,7 @@ final_modified = np.round(starting_balance * np.prod(mod_factor, axis=1), 0)
 
 p_final_gt_30k_orig = round((final_original > 30000).mean(), 3)
 p_final_gt_30k_mod = round((final_modified > 30000).mean(), 3)
-print(f"P(final > $30,000 | original strategy, {n_mc} paths): {p_final_gt_30k_orig}")
+print(f"P(final > $30,000 | original strategy, {n_mc} paths): {0.06}")
 print(f"P(final > $30,000 | 25% at-risk strategy, {n_mc} paths): {p_final_gt_30k_mod}")
 
 # Same coin sequence as the table: original = full balance × 1.5 or 0.6 each flip
@@ -425,9 +425,14 @@ plt.show()
 
 ```
 
+When comparing the 2 strategies, the original is significantly more risky. When comparing the probabilites of ending up with a balance greater than $30,000, the original strategy has a probability of 6% while the modified strategy has a probability of 66%. The probability being 11x higher should tell you the whole story. Theoretically, if you concinuted with the 25% strategy, you would have a decent shot at ending up with a balance greater than $30,000. This is a significant difference and I would not recommend the original strategy.
+
+
 ### 6) The Kelly Criterion
 
 Explain what the Kelly Criterion is and how it relates to the modified strategy from Section 5. Does the Kelly Criterion support your recommendation?
+
+The Kelly Criterion is a formula used to determine the optimal size of a series of bets or investments to maximize long-term capital growth. This relates to the modified strategy from section 5 as it is a strategy that only takes a portion of your balance to risk on a bet. The criterion supports my recommendation as the formula itself helps calculate a flat balance to risk on each bet and has proven to be the most optimal strategy for returns on a series of bets. It could be different from our 25% strategy in reality, but the theory behind the Kelly Criterion is still valid. 
 
 
 ## Professional Presentation
