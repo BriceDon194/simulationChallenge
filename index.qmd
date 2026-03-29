@@ -166,7 +166,7 @@ sim_data
 
 ```
 
-"every flip results in a increase in balance based on my calculations. your new balance is $45,000."
+If I were to play this game and only flip the coin once, I would expet to end up with a balance of $45,000. This is a 50% increase over my initial balance of $30,000. If I were the owner of the $30,000 initial balance, I would be very likely to buy-in to one round of the game as my expected value is greater than my initial balance.
 
 ### 2) Single Simulation Over Time (Narrative + Plot)
 
@@ -221,6 +221,9 @@ sim_data
 # and whether you would be satisfied with this outcome.
 
 ```
+
+The first 2 coin flips bring in gains that I would be satisfied with, reaching a total balance of $67,000, significantly higher than my initial balance of $30,000. However, after the second flip, my balance begins to take a nose dive and never returns anywhere close to my initial balance of $30,000. Even with the occasional coin flip that results in gains, the balance it is increasing on is so small that the returns are minimal at best. This is a clear indication that I would not be satisfied with this particular outcome.
+
 
 ### 3) 100 Simulations: Distribution of Final Balances
 
@@ -281,6 +284,8 @@ print(f"Median balance: ${median_final:,.0f}")
 print(f"P(final balance > $30,000): {percentage_profitable}%")
 ```
 
+The outcome for 100 simulations is so poor I would never even attempt to play the game. The chance of gaining a return higher than my initial buy in of $30,000 is only 3%. The odds are quite slim. The mean balance across all simulations is also $3,323, which is only 11% of my initial buy in. The same story exists with the median balance. $45 is so low that it is almost impossible to make a profit with this game.
+
 ### 4) Probability Balance > $30,000 at Age 75 (Original Game)
 
 Report the probability that your final balance exceeds $30,000. Interpret what this probability means for your investment decision—does this change your recommendation from Section 1?
@@ -328,6 +333,8 @@ print(f"Profitable simulations: {percentage_profitable}%")
 
 ```
 
+The probability that my final balance exceeds $30,000 is 6%. This is a very low probability and I would not be satisfied with this outcome. When compared to my initial thoughts in section 1, I would disagree with my assessment and conclusion. I would not recommend buying into this game. In section 1, you are only flipping the coin once and winning $15,000. In 50 flips, you are losing almost all of your inital buy in. I would not recommend playing this game at all.
+
 ### 5) Modified Strategy (Bet Exactly 25% Each Round)
 
 Instead of having the full balance at risk with each coin flip, assume only 25% of your balance is gambled each year. Compare this modified strategy to the original game: Which is riskier? Which has better upside? Which strategy would you recommend and why?
@@ -343,7 +350,7 @@ import matplotlib.pyplot as plt
 # Same as other chunks: legacy RNG with seed 45 (not default_rng — different stream)
 np.random.seed(45)
 
-n_simulations = 100  # coin flips per path; each flip uses 25% of the *current* balance
+n_simulations = 50  # coin flips per path; each flip uses 25% of the *current* balance
 starting_balance = 30000
 
 coin_flip = np.random.binomial(n=1, p=0.5, size=n_simulations)
@@ -366,7 +373,7 @@ balances_after_round = np.round(balance_path[1:], 0)
 # Table: each row is balance after that flip (next flip uses this as the new base)
 sim_data = pd.DataFrame({
     'sim_number': range(1, n_simulations + 1),
-    'age': range(26, 26 + n_simulations),  # aligns with plot: start at 25, then 26 … 125
+    'age': range(25, 25 + n_simulations),  # aligns with plot: start at 25, then 26 … 125
     'coin_flip': coin_flip,
     'balance': balances_after_round,
 })
